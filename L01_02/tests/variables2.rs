@@ -2,7 +2,7 @@
 mod tests {
     #[test]
     fn test_variables2() {
-        let x;
+        let x = 10;
         if x == 10 {
             println!("x is ten!");
         } else {
