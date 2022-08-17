@@ -5,7 +5,6 @@ pub(crate) fn control_flow() {
     loop_example();
 }
 
-//noinspection RsExternalLinter
 fn if_example() {
     // Ejemplo if en una sentencia let
     let condition = true;
