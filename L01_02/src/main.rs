@@ -1,3 +1,7 @@
+mod control_flow;
+mod data_types;
+
 fn main() {
-    println!("HOLA MUNDO!!!");
+    data_types::data_types();
+    control_flow::control_flow();
 }
