@@ -6,8 +6,7 @@
 
 // I AM NOT DONE
 
-
-fn sale_price(price: i32) -> {
+fn sale_price(price: i32) -> i32 {
     if is_even(price) {
         price - 10
     } else {
@@ -21,6 +20,8 @@ fn is_even(num: i32) -> bool {
 
 #[cfg(test)]
 mod tests {
+    use super::*;
+
     #[test]
     fn call_function() {
         let original_price = 51;

@@ -8,8 +8,10 @@ fn call_me(num: u32) {
 
 #[cfg(test)]
 mod tests {
+    use super::*;
+
     #[test]
     fn call_function() {
-        call_me();
+        call_me(7);
     }
 }
