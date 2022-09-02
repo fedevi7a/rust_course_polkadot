@@ -1,8 +1,9 @@
-// I AM NOT DONE
-
 #[derive(Debug)]
 enum Message {
-    // TODO: define the different variants used below
+    Move { _x: u8, _y: u8 },
+    Echo(String),
+    ChangeColor(u8, u8, u8),
+    Quit,
 }
 
 impl Message {
@@ -11,15 +12,20 @@ impl Message {
     }
 }
 
-fn main() {
-    let messages = [
-        Message::Move { x: 10, y: 30 },
-        Message::Echo(String::from("hello world")),
-        Message::ChangeColor(200, 255, 255),
-        Message::Quit,
-    ];
+mod tests {
+    use super::*;
 
-    for message in &messages {
-        message.call();
+    #[test]
+    fn main() {
+        let messages = [
+            Message::Move { _x: 10, _y: 30 },
+            Message::Echo(String::from("hello world")),
+            Message::ChangeColor(200, 255, 255),
+            Message::Quit,
+        ];
+
+        for message in &messages {
+            message.call();
+        }
     }
 }
