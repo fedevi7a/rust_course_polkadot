@@ -63,7 +63,7 @@ impl Animal for Sheep {
 pub(crate) fn traits() {
     // Type annotation is necessary in this case.
     let mut dolly: Sheep = Animal::new(String::from("Dolly"));
-    // TODO ^ Try removing the type annotations.
+    // ^ Try removing the type annotations.
 
     dolly.talk();
     dolly.shear();
