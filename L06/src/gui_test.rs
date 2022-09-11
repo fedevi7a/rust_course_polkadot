@@ -25,13 +25,3 @@ pub(crate) fn gui_test() {
 
     app.run().unwrap();
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test() {
-        gui_test();
-    }
-}

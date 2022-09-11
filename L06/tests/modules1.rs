@@ -1,12 +1,10 @@
-// I AM NOT DONE
-
 mod sausage_factory {
     // Don't let anybody outside of this module see this!
     fn get_secret_recipe() -> String {
         String::from("Ginger")
     }
 
-    fn make_sausage() {
+    pub(crate) fn make_sausage() {
         get_secret_recipe();
         println!("sausage!");
     }
@@ -14,6 +12,7 @@ mod sausage_factory {
 
 #[cfg(test)]
 mod tests {
+    use super::*;
 
     #[test]
     fn test_modules() {
