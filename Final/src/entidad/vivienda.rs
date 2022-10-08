@@ -3,7 +3,6 @@ use serde::{Deserialize, Serialize};
 use super::{tipo_vivienda::TipoVivienda, ScreenOutput};
 
 #[derive(Debug, Deserialize, Serialize, Clone)]
-#[serde(rename_all = "camelCase")]
 pub struct Vivienda {
     pub identificacion: usize,
     pub calle: String,
