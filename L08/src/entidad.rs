@@ -64,7 +64,7 @@ impl PersonaDAO {
     }
 
     pub fn save(&self, datos: &Vec<Persona>) {
-        let path_json = Path::new("./src/json/personas.json");
+        let path_json = Path::new("./L08/src/json/personas.json");
         std::fs::write(path_json, serde_json::to_string_pretty(&datos).unwrap()).unwrap();
     }
 
