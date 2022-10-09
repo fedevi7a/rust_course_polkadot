@@ -242,17 +242,17 @@ impl Gui {
         self.model.push(Vivienda {
             identificacion,
             calle: self.calle_input.value(),
-            numero: self.numero_input.value().parse().unwrap(),
-            piso: self.piso_input.value().parse().unwrap(),
+            numero: self.numero_input.value().parse().unwrap_or(0),
+            piso: self.piso_input.value().parse().unwrap_or(0),
             cp: self.cp_input.value(),
-            m2: self.m2_input.value().parse().unwrap(),
-            baños: self.baños_input.value().parse().unwrap(),
-            habitaciones: self.habitaciones_input.value().parse().unwrap(),
+            m2: self.m2_input.value().parse().unwrap_or(0),
+            baños: self.baños_input.value().parse().unwrap_or(0),
+            habitaciones: self.habitaciones_input.value().parse().unwrap_or(0),
             tipo_vivienda: TipoVivienda::from(
                 &self
                     .tipo_vivienda_choice
                     .choice()
-                    .expect("Tipo de vivienda no seleccionado"),
+                    .unwrap_or(format!("{:?}", TipoVivienda::Casa)),
             )
             .expect("Tipo de vivienda invalido"),
         });
@@ -270,17 +270,17 @@ impl Gui {
             match search_result {
                 Some(vivienda) => {
                     vivienda.calle = self.calle_input.value();
-                    vivienda.numero = self.numero_input.value().parse().unwrap();
-                    vivienda.piso = self.piso_input.value().parse().unwrap();
+                    vivienda.numero = self.numero_input.value().parse().unwrap_or(0);
+                    vivienda.piso = self.piso_input.value().parse().unwrap_or(0);
                     vivienda.cp = self.cp_input.value();
-                    vivienda.m2 = self.m2_input.value().parse().unwrap();
-                    vivienda.baños = self.baños_input.value().parse().unwrap();
-                    vivienda.habitaciones = self.habitaciones_input.value().parse().unwrap();
+                    vivienda.m2 = self.m2_input.value().parse().unwrap_or(0);
+                    vivienda.baños = self.baños_input.value().parse().unwrap_or(0);
+                    vivienda.habitaciones = self.habitaciones_input.value().parse().unwrap_or(0);
                     vivienda.tipo_vivienda = TipoVivienda::from(
                         &self
                             .tipo_vivienda_choice
                             .choice()
-                            .expect("Tipo de vivienda no seleccionado"),
+                            .unwrap_or(format!("{:?}", TipoVivienda::Casa)),
                     )
                     .expect("Tipo de vivienda invalido");
 
@@ -374,7 +374,7 @@ impl Gui {
         let filter_empty: bool = prefix.trim().eq_ignore_ascii_case("");
         self.list_browser.clear();
         for (_i, p) in self.model.iter().enumerate() {
-            if (p.calle.eq_ignore_ascii_case(prefix.as_str())) || filter_empty {
+            if (p.calle.to_lowercase().contains(prefix.as_str())) || filter_empty {
                 let item = p.to_string();
                 self.list_browser.add(&item);
             }
