@@ -1,6 +1,6 @@
-use std::{collections::HashMap, path::Path};
+use std::{collections::HashMap, fmt::Display, path::Path};
 
-use super::{vivienda::Vivienda, ScreenOutput};
+use super::vivienda::Vivienda;
 
 const PATH_CSV: &str = "./Final/csv/viviendas.csv";
 
@@ -9,9 +9,9 @@ pub struct ViviendaDAO {
     pub last_index: usize,
 }
 
-impl ScreenOutput for ViviendaDAO {
-    fn to_screen(&self) -> String {
-        format!("{:?}", self.indice)
+impl Display for ViviendaDAO {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_fmt(format_args!("{:?}", self.indice))
     }
 }
 

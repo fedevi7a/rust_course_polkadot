@@ -7,24 +7,24 @@ pub enum TipoVivienda {
 }
 
 impl TipoVivienda {
-    pub fn from(name: &str) -> Self {
+    pub fn from(name: &str) -> Option<Self> {
         match name {
-            "Casa" => Self::Casa,
-            "Apartamento" => Self::Apartamento,
-            _ => panic!("{} es un valor invalido", name),
+            "Casa" => Some(Self::Casa),
+            "Apartamento" => Some(Self::Apartamento),
+            _ => None,
         }
     }
 
-    pub fn get_values() -> Vec<Self> {
+    pub fn as_vector() -> Vec<Self> {
         vec![Self::Casa, Self::Apartamento]
     }
 
-    pub fn get_position(&self) -> usize {
-        for (i, tipo_vivienda) in Self::get_values().iter().enumerate() {
+    pub fn get_position(&self) -> Result<usize, String> {
+        for (index, tipo_vivienda) in Self::as_vector().iter().enumerate() {
             if self == tipo_vivienda {
-                return i;
+                return Ok(index);
             }
         }
-        panic!("{:?} es un valor invalido", self);
+        Err(format!("{:?} es un valor invalido", self))
     }
 }

@@ -1,6 +1,8 @@
+use std::fmt::Display;
+
 use serde::{Deserialize, Serialize};
 
-use super::{tipo_vivienda::TipoVivienda, ScreenOutput};
+use super::tipo_vivienda::TipoVivienda;
 
 #[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct Vivienda {
@@ -15,11 +17,11 @@ pub struct Vivienda {
     pub tipo_vivienda: TipoVivienda,
 }
 
-impl ScreenOutput for Vivienda {
-    fn to_screen(&self) -> String {
-        format!(
+impl Display for Vivienda {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_fmt(format_args!(
             "{})  {} {}, {} piso - C.P: {} - {:#?}",
             self.identificacion, self.calle, self.numero, self.piso, self.cp, self.tipo_vivienda,
-        )
+        ))
     }
 }
